@@ -14,7 +14,7 @@ A master sempre conterá a versão mais atualizada do my-aac relativo a versão 
 
 Site muito seguro utilizado pela maioria dos otservers.
 
-Foi desenvolvido com o intuito de funcionar perfeitamente com a maioria das versões da [TFS](https://github.com/tibiaking/forgottenserver)
+Foi desenvolvido com o intuito de funcionar perfeitamente com a maioria das versões 13+ da [Canary](https://github.com/tibiaking/canary)
 
 E este repositório ira ajudar no desenvolvimento de sistemas, remoção de bugs e configurações.
 
