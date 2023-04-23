@@ -10,7 +10,6 @@ A free and open-source Automatic Account Creator (AAC) written in PHP
 ## Esse site foi desenvolvido pelo [Slawkens - OTSOFT](https://github.com/otsoft/myaac) e editado pela comunidade.
 ### Esta fork se baseia nesta [rev](https://github.com/otsoft/myaac/commit/f24fc75b12bb6a44a5f99c7b98da03223ad9f8bf)
 ### Lembre-se
-A master sempre conterá a versão mais atualizada do my-aac relativo a versão da tfs.
 
 Site muito seguro utilizado pela maioria dos otservers.
 
