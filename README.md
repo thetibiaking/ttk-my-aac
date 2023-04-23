@@ -22,5 +22,30 @@ E este repositório ira ajudar no desenvolvimento de sistemas, remoção de bugs
 ### Configurações
 
 
+## Novidades ?
+> Mudou a imagem da sombra da caixa para css
+
+> Botões alterados, imagem removida e adicionada por css
+
+> Novos botões criados com base em cores (verde e vermelho)
+
+> Carregamento de página adicionado, configurável em config.php
+
+> Barra de status adicionada com redes sociais configuráveis
+
+> Barra de status de slide e recolhimento adicionada, configurável em config.php
+
+> Adicionado efeito de furto no menu
+
+> Página de download do cliente criada, link configurável em config.php
+
+> Calendário de eventos criado, obtendo informações diretamente de events.xml
+
+> Char Bazaar com taxas configuráveis ​​em config.php
+
+> Login alterado por e-mail
+
+> Bootstrap 4.
+
 ### CREDITS:
 Slawkens, TibiaKing Team
