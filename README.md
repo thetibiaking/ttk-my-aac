@@ -18,9 +18,6 @@ Foi desenvolvido com o intuito de funcionar perfeitamente com a maioria das vers
 E este repositório ira ajudar no desenvolvimento de sistemas, remoção de bugs e configurações.
 
 
-### Configurações
-
-
 ## Novidades ?
 > Mudou a imagem da sombra da caixa para css
 
@@ -45,6 +42,40 @@ E este repositório ira ajudar no desenvolvimento de sistemas, remoção de bugs
 > Login alterado por e-mail
 
 > Bootstrap 4.
+
+> Config.php install 100% 
+> 
+> Config.Local.php install 100%
+
+### Requirements
+
+	- PHP 7.4 or later
+	- MySQL database
+    - Composer
+	- PDO PHP Extension
+	- XML PHP Extension
+	- ZIP PHP Extension
+	- (optional) mod_rewrite to use friendly_urls
+
+### Installation
+
+	Just decompress and untar the source (which you should have done by now,
+	if you're reading this), into your webserver's document root.
+
+	MyAAC needs proper permissions to handle files correctly.
+	If you're using apache2, then your directory needs to have owner set to: www-data, you can do it by using following command:
+		chown -R www-data.www-data /var/www/*
+			(or any other path your MyAAC installation is located at..)
+
+	  Note: Linux only
+		If you're under linux use these commands to set proper permissions:
+			chmod 660 config.local.php
+			chmod 660 images/guilds
+			chmod 660 images/houses
+			chmod 660 images/gallery
+			chmod -R 770 system/cache
+
+	Visit http://your_domain/install (http://127.0.0.1/install) and follow instructions in the browser.
 
 ### CREDITS:
 Slawkens, TibiaKing Team
