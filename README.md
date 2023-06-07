@@ -36,8 +36,8 @@ Este repositório ajudará no desenvolvimento de sistemas, remoção de bugs e c
 - (opcional) mod_rewrite para usar URLs amigáveis
 
 ### Instalação
-### Ubuntu
-#### Na pasta raiz do ttk-my-aac rode ./install-ttk-my-aac.sh siga os passos.
+## Ubuntu
+### Na pasta raiz do ttk-my-aac rode ./install-ttk-my-aac.sh siga os passos.
 
 Basta descompactar e desempacotar o código-fonte (o que você já deveria ter feito até agora, se estiver lendo isso) no diretório raiz do seu servidor web.
 
