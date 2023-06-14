@@ -1,0 +1,18 @@
+<div class="NewsHeadline">
+	<div class="NewsHeadlineBackground" style="background-image:url(templates/tibiacom/images/news/newsheadline_background.gif)">
+		<img src="templates/tibiacom/images/news/icon_1.gif" class="NewsHeadlineIcon" />
+		<div class="NewsHeadlineDate">5.6.2023 - </div>
+		<div class="NewsHeadlineText">Hello!</div>
+			</div>
+</div>
+<table style="clear:both" border=0 cellpadding=0 cellspacing=0 width="100%" >
+	<tr>
+		<td style="padding-left:10px;padding-right:10px;" ><img src="templates/tibiacom/images/letters/M.gif" alt="M" border="0" align="bottom">yAAC is just READY to use!</td>
+	</tr>
+		<tr>
+		<td>
+			<div style="text-align: right; margin-right: 10px;"><a href="http://177.82.108.163:8090/?forum/thread/0">» Comment on this news</a></div>
+		</td>
+	</tr>
+	</table>
+<br/>

@@ -18,7 +18,7 @@
 
 $config = array(
 	// directories & files
-	'server_path' => '', // path to the server directory (same directory where config file is located)
+	'server_path' => 'D:\OTs\Tibia\MyCanaryMainBase\MyCanary', // path to the server directory (same directory where config file is located)
 
 	/**
 	 * Environment Setting
@@ -86,7 +86,7 @@ $config = array(
 	),
 
 	// images
-	'outfit_images_url' => 'outfit/animoutfit.php', // set to animoutfit.php for animated outfit
+	'outfit_images_url' => './animated-outfits/animoutfit.php', // set to animoutfit.php for animated outfit
 	'item_images_url' => 'images/items/', // set to images/items if you host your own items in images folder
 
 	// account
@@ -95,11 +95,11 @@ $config = array(
 	'account_login_by_email_fallback' => false, // allow also additionally login by Account Name/Number (for users that might forget their email)
 	'account_create_auto_login' => false, // auto login after creating account?
 	'account_create_character_create' => true, // allow directly to create character on create account page?
-	'account_mail_verify' => false, // force users to confirm their email addresses when registering account
+	'account_mail_verify' => true, // force users to confirm their email addresses when registering account
 	'account_mail_unique' => true, // email addresses cannot be duplicated? (one account = one email)
 	'account_premium_days' => 0, // default premium days on new account
 	'account_premium_points' => 0, // default premium points on new account
-	'account_welcome_mail' => false, // send welcome email when user registers
+	'account_welcome_mail' => true, // send welcome email when user registers
 	'account_mail_change' => 2, // how many days user need to change email to account - block hackers
 	'account_country' => true, // user will be able to set country of origin when registering account, this information will be viewable in others places aswell
 	'account_country_recognize' => true, // should country of user be automatically recognized by his IP? This makes an external API call to http://ipinfo.io
@@ -110,20 +110,20 @@ $config = array(
 	'characters_per_account' => 10,	// max. number of characters per account
 
 	// mail
-	'mail_enabled' => false, // is aac maker configured to send e-mails?
-	'mail_address' => 'no-reply@your-server.org', // server e-mail address (from:)
-	'mail_admin' => 'your-address@your-server.org', // admin email address, where mails from contact form will be sent
+	'mail_enabled' => true, // is aac maker configured to send e-mails?
+	'mail_address' => 'referralvalleze@gmail.com', // server e-mail address (from:)
+	'mail_admin' => 'referralvalleze@gmail.com', // admin email address, where mails from contact form will be sent
 	'mail_signature' => array( // signature that will be included at the end of every message sent using _mail function
 		'plain' => ""/*"--\nMy Server,\nhttp://www.myserver.com"*/,
 		'html' => ''/*'<br/>My Server,\n<a href="http://www.myserver.com">myserver.com</a>'*/
 	),
-	'smtp_enabled' => false, // send by smtp or mail function (set false if use mail function, set to true if you use GMail or Microsoft Outlook)
-	'smtp_host' => '', // mail host. smtp.gmail.com for GMail / smtp-mail.outlook.com for Microsoft Outlook
-	'smtp_port' => 25, // 25 (default) / 465 (ssl, GMail) / 587 (tls, Microsoft Outlook)
+	'smtp_enabled' => true, // send by smtp or mail function (set false if use mail function, set to true if you use GMail or Microsoft Outlook)
+	'smtp_host' => 'smtp.gmail.com', // mail host. smtp.gmail.com for GMail / smtp-mail.outlook.com for Microsoft Outlook
+	'smtp_port' => 465, // 25 (default) / 465 (ssl, GMail) / 587 (tls, Microsoft Outlook)
 	'smtp_auth' => true, // need authorization?
-	'smtp_user' => 'admin@example.org', // here your email username
-	'smtp_pass' => '',
-	'smtp_secure' => '', // What kind of encryption to use on the SMTP connection. Options: '', 'ssl' (GMail) or 'tls' (Microsoft Outlook)
+	'smtp_user' => 'referralvalleze@gmail.com', // here your email username
+	'smtp_pass' => 'ldusmwhqmasghxmt',
+	'smtp_secure' => 'ssl', // What kind of encryption to use on the SMTP connection. Options: '', 'ssl' (GMail) or 'tls' (Microsoft Outlook)
 	'smtp_debug' => false, // set true to debug (you will see more info in error.log)
 
 	// reCAPTCHA (prevent spam bots)
@@ -171,11 +171,11 @@ $config = array(
 
 	// town list used when creating character
 	// won't be displayed if there is only one item (rookgaard for example)
-	'character_towns' => array(1),
+	'character_towns' => array(8),
 
 	// characters length
 	// This is the minimum and the maximum length that a player can create a character. It is highly recommend the maximum length to be 21.
-	'character_name_min_length' => 4,
+	'character_name_min_length' => 3,
 	'character_name_max_length' => 21,
 
 	// list of towns
@@ -211,7 +211,7 @@ $config = array(
 	'online_record' => true, // display players record?
 	'online_vocations' => false, // display vocation statistics?
 	'online_vocations_images' => false, // display vocation images?
-	'online_skulls' => true, // display skull images
+	'online_skulls' => false, // display skull images
 	'online_outfit' => true,
 	'online_afk' => false,
 
@@ -231,7 +231,7 @@ $config = array(
 	'highscores_vocation' => true, // show player vocation under his nickname?
 	'highscores_frags' => false, // show 'Frags' tab (best fraggers on the server)? Only 0.3
 	'highscores_balance' => false, // show 'Balance' tab (richest players on the server)
-	'highscores_outfit' => true, // show player outfit?
+	'highscores_outfit' => false, // show player outfit?
 	'highscores_country_box' => false, // doesnt work yet! (not implemented)
 	'highscores_groups_hidden' => 3, // this group id and higher won't be shown on the highscores
 	'highscores_ids_hidden' => array(0), // this ids of players will be hidden on the highscores (should be ids of samples)
@@ -266,7 +266,7 @@ $config = array(
 	
 	'achievements_base' => 300000,
 	
-	'server_save' => '05:00:00',
+	'server_save' => '00:00:00',
 	
 	'signature_enabled' => false,
 	'signature_type' => 'tibian', // signature engine to use: tibian, mango, gesior
@@ -280,17 +280,17 @@ $config = array(
 	'news_author' => false, // show author of the news
 	
 	// banner home
-	'banner_status' => true,
+	'banner_status' => false,
 	'banner_image' => '500x660.png', // templates->tibiacom->images->carousel
-	'banner_link' => 'www.instagram.com',
+	'banner_link' => '',
 	
 	// status bar
 	'status_bar' => true,
-	'client_link' => 'https://www.lucasgiovanni.com', // link to download tibia client
-	'discord_link' => 'https://www.lucasgiovanni.com', // link to join discord channel
-	'whatsapp_link' => '5511912345678', // wa.me/5511912345678
-	'instagram_link' => 'test', // www.instagram.com/PROFILE
-	'facebook_link' => 'test', // www.facebook.com/PAGE
+	'client_link' => '', // link to download tibia client
+	'discord_link' => '', // link to join discord channel
+	'whatsapp_link' => '', // wa.me/5511912345678
+	'instagram_link' => '', // www.instagram.com/PROFILE
+	'facebook_link' => '', // www.facebook.com/PAGE
 	'collapse_status' => true,
 	
 	// events
@@ -352,7 +352,7 @@ $config = array(
 	'google_analytics_id' => '', // e.g.: UA-XXXXXXX-X
 	'experiencetable_columns' => 4, // how many columns to display in experience table page. * experiencetable_rows, 5 = 500 (will show up to 500 level)
 	'experiencetable_rows' => 500, // till how many levels in one column
-	'date_timezone' => 'Europe/Berlin', // more info at http://php.net/manual/en/timezones.php
+	'date_timezone' => 'America/Sao_Paulo', // more info at http://php.net/manual/en/timezones.php
 	'footer_show_load_time' => true, // display load time of the page in the footer
 
 	'npc' => array()
