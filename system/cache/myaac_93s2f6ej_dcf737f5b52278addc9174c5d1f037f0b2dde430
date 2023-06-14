@@ -1,0 +1,28 @@
+<div id="newsticker" class="Box">
+	<div class="Corner-tl" style="background-image: url(templates/tibiacom/images/content/corner-tl.gif);"></div>
+	<div class="Corner-tr" style="background-image: url(templates/tibiacom/images/content/corner-tr.gif);"></div>
+	<div class="Border_1" style="background-image: url(templates/tibiacom/images/content/border-1.gif);"></div>
+	<div class="BorderTitleText" style="background-image: url(templates/tibiacom/images/content/title-background-green.gif);"></div>
+	<img class="Title" src="templates/tibiacom/images/header/headline-newsticker.gif" alt="Contentbox headline">
+	<div class="Border_2">
+		<div class="Border_3">
+			<div class="BoxContent" style="background-image: url(templates/tibiacom/images/content/scroll.gif);">
+																				<div id="TickerEntry-0" class="Row" onclick='TickerAction("TickerEntry-0")'>
+					<div class="Odd">
+					<div class="NewsTickerIcon" style="background-image: url(templates/tibiacom/images/news/icon_1_small.gif);"></div>
+					<div id="TickerEntry-0-Button" class="NewsTickerExtend" style="background-image: url(templates/tibiacom/images/general/plus.gif);"></div>
+					<div class="NewsTickerText">
+						<span class="NewsTickerDate">5 Jun 2023 -</span>
+						<div id="TickerEntry-0-ShortText" class="NewsTickerShortText">Testando</div>
+						<div id="TickerEntry-0-FullText" class="NewsTickerFullText"><p>Testando</p>
+													</div>
+					</div>
+				</div>
+			</div>
+									</div>
+	</div>
+</div>
+<div class="Border_1" style="background-image: url(templates/tibiacom/images/content/border-1.gif);"></div>
+<div class="CornerWrapper-b"><div class="Corner-bl" style="background-image: url(templates/tibiacom/images/content/corner-bl.gif);"></div></div>
+<div class="CornerWrapper-b"><div class="Corner-br" style="background-image: url(templates/tibiacom/images/content/corner-br.gif);"></div></div>
+</div>
