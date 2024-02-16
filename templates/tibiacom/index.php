@@ -494,7 +494,7 @@ if ($db->hasTable('players_online')) {
 $playersOnlineResult = $db->query($playersOnlineQuery);
 $totalPlayers = $playersOnlineResult->fetchColumn();
 
-if ($totalPlayers > 0) {
+if ($status['online']) {
     echo $totalPlayers . ' Players Online';
 } else {
     echo 'Server Offline';
