@@ -16,6 +16,8 @@
  $debug = false;
  $notificationUrl = 'https://mywebsite.online/?mpnotification';
  $noSessionUrl = 'https://mywebsite.online/?account/manage';
+ $pixStatusUrl = "https://mywebsite.online/?p=mpnotification&id=' . $collector_id . '&debug=' . ($debug ? 'true' : 'false')"
+
  $donationType = 'premium_points'; // coins or premium_points
  $doublePoints = false; // not added yet
  $authorizationToken = 'APP_USR-YOURTOKEN';
