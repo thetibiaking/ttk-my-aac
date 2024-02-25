@@ -52,7 +52,7 @@ $minutes_ServerSave = $explodeServerSave[1];
 $seconds_ServerSave = $explodeServerSave[2];
 ?>
 <script>
-	var countDownDate = new Date("Jan 01, 2023 <?php echo $hours_ServerSave ?>:<?php echo $minutes_ServerSave ?>:<?php echo $seconds_ServerSave ?>").getTime();
+	var countDownDate = new Date("Jun 08, 2023 <?php echo $hours_ServerSave ?>:<?php echo $minutes_ServerSave ?>:<?php echo $seconds_ServerSave ?>").getTime();
 	var x = setInterval(function() {
 		var now = new Date().getTime();
 		var distance = countDownDate - now;

@@ -4,8 +4,7 @@ defined('MYAAC') or die('Direct access not allowed!');
 if(isset($config['boxes']))
 	$config['boxes'] = explode(",", $config['boxes']);
 ?>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+
 	<?php echo template_place_holder('head_start'); ?>
 	<link rel="shortcut icon" href="<?php echo $template_path; ?>/images/favicon.ico" type="image/x-icon" />
 	<link rel="icon" href="<?php echo $template_path; ?>/images/favicon.ico" type="image/x-icon" />
@@ -241,6 +240,8 @@ if(isset($config['boxes']))
 		}
 
 		// mouse-over effects of menubuttons and submenuitems
+
+		
 function MouseOverMenuItem(source) {
     if(source.firstChild.style){
         source.firstChild.style.visibility = "visible";
@@ -255,13 +256,13 @@ function MouseOutMenuItem(source) {
 
 function MouseOverSubmenuItem(source) {
     if(source.style){
-        source.style.backgroundColor = "#14433F";
+        source.style.backgroundColor = "white";
     }
 }
 
 function MouseOutSubmenuItem(source) {
     if(source.style){
-        source.style.backgroundColor = "#0D2E2B";
+        source.style.backgroundColor = "white";
     }
 }
 	</script>
@@ -324,7 +325,6 @@ function MouseOutSubmenuItem(source) {
         <div id="MenuColumn">
           <div id="LeftArtwork">
             <img id="TibiaLogoArtworkTop" src="<?php echo $template_path; ?>/images/header/<?php echo $config['logo_image']; ?>" onClick="window.location = '<?php echo getLink('news')?>';" alt="logoartwork" />
-            <img id="LogoLink" src="<?php echo $template_path; ?>/images/header/tibia-logo-artwork-string.gif" onClick="window.location = 'mailto:<?php echo $config['mail_address']; ?>';" alt="logoartwork" />
           </div>
 
   <div id="Loginbox" >
@@ -406,10 +406,16 @@ foreach($config['menu_categories'] as $id => $cat) {
 				<div id='submenu_<?php echo str_replace('/', '', $menu['link']); ?>' class='Submenuitem' onMouseOver='MouseOverSubmenuItem(this)' onMouseOut='MouseOutSubmenuItem(this)' style="color: <?php echo $link_color; ?>;">
 					<div class='LeftChain' style='background-image:url(<?php echo $template_path; ?>/images/general/chain.gif);'></div>
 					<div id='ActiveSubmenuItemIcon_<?php echo str_replace('/', '', $menu['link']); ?>' class='ActiveSubmenuItemIcon' style='background-image:url(<?php echo $template_path; ?>/images/menu/icon-activesubmenu.gif);'></div>
-					<div class='SubmenuitemLabel' style="color: <?php echo $link_color; ?>;"><?php echo $menu['name']; ?></div>
+					<div class='SubmenuitemLabel'
+						style="color: <?php echo $link_color; ?>; background-color: #1a0000;"
+						onmouseover="this.style.color='#new_hover_color'; this.style.backgroundColor='#new_hover_background_color'"
+						onmouseout="this.style.color='<?php echo $link_color; ?>'; this.style.backgroundColor='#1a0000'">
+						<?php echo $menu['name']; ?>
+					</div>
 					<div class='RightChain' style='background-image:url(<?php echo $template_path; ?>/images/general/chain.gif);'></div>
 				</div>
 			</a>
+
 			<?php
 		}
 	?>
@@ -479,10 +485,19 @@ foreach($config['menu_categories'] as $id => $cat) {
 					<span class="InfoBarSmallElement">
 						<a class="InfoBarLinks" href="?online">
 <?php
-if($status['online']){
-	echo '' . $status['players'] . ' Players Online';
+if ($db->hasTable('players_online')) {
+    $playersOnlineQuery = 'SELECT COUNT(*) as `total_players` FROM `players_online`';
 } else {
-	echo 'Server Offline';
+    $playersOnlineQuery = 'SELECT COUNT(*) as `total_players` FROM `players` WHERE `online` > 0';
+}
+
+$playersOnlineResult = $db->query($playersOnlineQuery);
+$totalPlayers = $playersOnlineResult->fetchColumn();
+
+if ($status['online']) {
+    echo $totalPlayers . ' Players Online';
+} else {
+    echo 'Server Offline';
 }
 ?>
 						</a>
@@ -598,33 +613,62 @@ $count++;
 
         <div id="ThemeboxesColumn">
 <?PHP
-$creaturequery = $SQL->query("SELECT `boostname`, `looktype`, `lookfeet` , `looklegs` , `lookhead` , `lookbody` , `lookaddons` , `lookmount`   FROM `boosted_creature`")->fetch();
+$creaturequery = $SQL->query("SELECT `boostname` FROM `boosted_creature` ORDER BY `date` DESC")->fetch();
+
+
+
+// Se houver resultados, formate a string
+if ($creaturequery) {
+    $boostedCreature = $creaturequery['boostname'];
+    $formattedCreature = ucwords(str_replace('_', ' ', $boostedCreature));
+    echo $formattedCreature;
+} else {
+    echo "Nenhum resultado encontrado.";
+}
+
 $creaturename = $creaturequery["boostname"];
-$creaturetype = $creaturequery["looktype"];
-$creaturefeet = $creaturequery["lookfeet"];
-$creaturelegs = $creaturequery["looklegs"];
-$creaturehead = $creaturequery["lookhead"];
-$creaturebody = $creaturequery["lookbody"];
-$creatureaddons = $creaturequery["lookaddons"];
-$creaturemount= $creaturequery["lookmount"];
+
 ?>
 
+
+
 <?PHP
-$bossquery = $SQL->query("SELECT `boostname`, `looktype`, `lookfeet` , `looklegs` , `lookhead` , `lookbody` , `lookaddons` , `lookmount`   FROM `boosted_boss`")->fetch();
+$bossquery = $SQL->query("SELECT `boostname` FROM `boosted_boss` ORDER BY `date` DESC")->fetch();
 $bossname = $bossquery["boostname"];
-$bosstype = $bossquery["looktype"];
-$bossfeet = $bossquery["lookfeet"];
-$bosslegs = $bossquery["looklegs"];
-$bosshead = $bossquery["lookhead"];
-$bossbody = $bossquery["lookbody"];
-$bossaddons = $bossquery["lookaddons"];
-$bossmount= $bossquery["lookmount"];
+// Se houver resultados, formate a string
+if ($bossquery) {
+    $boostedBoss = $bossquery['boostname'];
+    $formatedBoss = ucwords(str_replace('_', ' ', $boostedBoss));
+	$bosstypeEx = 0;
+    echo $formatedBoss;
+} else {
+    echo "Nenhum resultado encontrado.";
+}
+
+
+
 ?>
           <div id="RightArtwork">
-            <img id="Creature" src="<?php echo $config['outfit_images_url'] ?>?id=<?php echo $creaturetype; ?>&addons=<?php echo $creatureaddons; ?>&head=<?php echo $creaturehead; ?>&body=<?php echo $creaturebody; ?>&legs=<?php echo $creaturelegs; ?>&feet=<?php echo $creaturefeet; ?>&mount=<?php echo $creaturemount; ?>" alt="Creature of the Day" title="Today's boosted creature: <?PHP echo ucwords(strtolower(trim($creaturename))); ?>">
-            <img id="Boss" src="<?php echo $config['outfit_images_url'] ?>?id=<?php echo $bosstype; ?>&addons=<?php echo $bossaddons; ?>&head=<?php echo $bosshead; ?>&body=<?php echo $bossbody; ?>&legs=<?php echo $bosslegs; ?>&feet=<?php echo $bossfeet; ?>&mount=<?php echo $bossmount; ?>" alt="Boss of the Day" title="Today's boosted boss: <?PHP echo ucwords(strtolower(trim($bossname))); ?>">
-            <img id="PedestalAndOnline" src="<?php echo $template_path; ?>/images/header/pedestal.gif" alt="Monster Pedestal and Players Online Box"/>
-        </div>
+                    <img id="Creature"
+                         src="<?= $template_path; ?>/images/monsters/<?= $formattedCreature ?>.gif"
+                         alt="Creature of the Day"
+                         >
+
+                    <?php if ($bosstypeEx != 0): ?>
+                        <img id="Boss" src="BOSS USE ADDON"
+                             alt="Boss of the Day"
+                             >
+                    <?php else: ?>
+                        <img id="Boss"
+						src="<?= $template_path; ?>/images/monsters/<?= $formatedBoss ?>.gif"
+                             
+                             alt="Boss of the Day"
+                             >
+                    <?php endif; ?>
+
+                    <img id="PedestalAndOnline" src="<?= $template_path; ?>/images/header/pedestal.gif"
+                         alt="Monster Pedestal and Players Online Box"/>
+                </div>
 
         <div id="Themeboxes">
 			<?php
