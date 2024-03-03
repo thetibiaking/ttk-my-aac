@@ -79,4 +79,4 @@ if($diasemana[$diasemana_numero] == 'sabado'){
         </div>
     </div>
     <div class="rashid_bottom"></div>
-</div>
+</div> 

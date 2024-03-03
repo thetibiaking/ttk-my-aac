@@ -37,7 +37,7 @@
         width: 64px;
         height: 64px;
         background-position: bottom right;
-        left: -15px;
+        left: 15px;
         margin-top: -30px;
     }
     .rank_text{

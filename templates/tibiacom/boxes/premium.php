@@ -1,5 +1,5 @@
 <?php
-/*$twig->display('premium.html.twig');*/
+$twig->display('premium.html.twig');*/
 $activeBox = rand(1,7);
 ?>
 <?php if($activeBox == 1){ ?>

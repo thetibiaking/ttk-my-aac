@@ -4,7 +4,18 @@ defined('MYAAC') or die('Direct access not allowed!');
 if(isset($config['boxes']))
 	$config['boxes'] = explode(",", $config['boxes']);
 ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16453797445">
+</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'AW-16453797445');
+</script>
 	<?php echo template_place_holder('head_start'); ?>
 	<link rel="shortcut icon" href="<?php echo $template_path; ?>/images/favicon.ico" type="image/x-icon" />
 	<link rel="icon" href="<?php echo $template_path; ?>/images/favicon.ico" type="image/x-icon" />
@@ -494,7 +505,7 @@ if ($db->hasTable('players_online')) {
 $playersOnlineResult = $db->query($playersOnlineQuery);
 $totalPlayers = $playersOnlineResult->fetchColumn();
 
-if ($status['online']) {
+if ($totalPlayers > 0) {
     echo $totalPlayers . ' Players Online';
 } else {
     echo 'Server Offline';
@@ -638,12 +649,13 @@ $bossname = $bossquery["boostname"];
 // Se houver resultados, formate a string
 if ($bossquery) {
     $boostedBoss = $bossquery['boostname'];
-    $formatedBoss = ucwords(str_replace('_', ' ', $boostedBoss));
-	$bosstypeEx = 0;
+    $formatedBoss = ucwords(str_replace(' ', '_', $boostedBoss));
+    $bosstypeEx = 0;
     echo $formatedBoss;
 } else {
     echo "Nenhum resultado encontrado.";
 }
+
 
 
 
