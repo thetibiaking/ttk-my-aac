@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo '<p>Você gerou um pix no valor de ' .$totalValue. 'R$ e ' . $pontosGanhos . ' pontos!</p>';
         echo '<p>Ao Pagar você recebera seus pontos automaticamente</p>';
         echo '<p>Status: ' . $resultado->status . '</p>';
-        echo '<button onclick="location.href=\'' . $pixStatusUrl . '\'" type="button">Conferir Status do Pedido</button> <br>';
+		echo '<button onclick="location.href=\'https://mywebsite.online/?p=mpnotification&id=' . $collector_id . '&debug=' . ($debug ? 'true' : 'false') . '\'" type="button">Conferir Status do Pedido</button> <br>';
         // Ação no banco de dados (se necessário)
         $current_session = getSession('account');
 
