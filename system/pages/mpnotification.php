@@ -115,7 +115,7 @@ if ($resultado->status === 'approved' || $resultado->status === 'paid') {
         echo 'Payment already processed.';
     }
 } else {
-    echo 'Payment status is not "approved" or "paid". No database update performed.';
+    echo '<br><h1>Pagamento não realizado ainda, recarrega a pagina após pagar.</h1>';
 }
 
 

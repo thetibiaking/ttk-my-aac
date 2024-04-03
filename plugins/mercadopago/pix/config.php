@@ -10,18 +10,18 @@
  * @version   1.0.0
  */
 
- $pointsByDonate = 60; //  coins
- $priceByPoints = 25.00; //  value
+ $pointsByDonate = 250; //  coins
+ $priceByPoints = 10.00; //  value
  $conversionRate = $pointsByDonate / $priceByPoints; 
  $debug = false;
- $notificationUrl = 'https://mywebsite.online/?mpnotification';
- $noSessionUrl = 'https://mywebsite.online/?account/manage';
-
- $donationType = 'premium_points'; // coins or premium_points
+ $notificationUrl = 'https://meusite.com/?mpnotification';
+ $noSessionUrl = 'https://meusite.com/?account/manage';
+ $donationType = 'coins_transferable'; // coins or premium_points
  $doublePoints = false; // not added yet
- $authorizationToken = 'APP_USR-YOURTOKEN';
+ $authorizationToken = '';
 
-$servername     = "localhost"; 
+// Conexao com banco de dados
+$servername     = "localhost"; // NO NEED TO USE THIS
 $username       = "root";
 $password       = "";
 $db_name        = "";

@@ -14,10 +14,6 @@ require_once(SYSTEM . 'functions.php');
 require_once(SYSTEM . 'init.php');
 require_once(PLUGINS . 'mercadopago/pix/config.php');
 
-if(!isset($config['mercadopago']) || !count($config['mercadopago']) || !count($config['mercadopago']['options'])) {
- 	echo "MercadoPago is disabled. If you're an admin please configure this script in config.local.php.";
- 	return;
- }
 
 if (empty($current_session)) {
     header("Location: " . $noSessionUrl);
@@ -47,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $dados["payment_method_id"] = "pix";
     $dados["notification_url"] = $notificationUrl;
     $dados["payer"]["email"] = $_POST['email_cob'];
-    $dados["payer"]["first_name"] = "Nilza";
+    $dados["payer"]["first_name"] = "Lucas";
     $dados["payer"]["last_name"] = "Guimaraes";
     $dados["payer"]["identification"]["type"] = "CPF";
     $dados["payer"]["identification"]["number"] = $cpf;
@@ -91,40 +87,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo 'Collector ID: ' . $collector_id;
 
     // Verifica se a resposta foi bem-sucedida antes de exibir o QR Code
-    if ($resultado->status === 'pending') {
+       if ($resultado->status === 'pending') {
         // Exibe o QR Code e o código apenas se o debug estiver desativado
         if (!$debug) {
             echo '<img style="display:block; width:300px;height:300px;" id="base64image" src="data:image/jpeg;base64, ' . $resultado->point_of_interaction->transaction_data->qr_code_base64 . '" />';
             echo '<b>Copie:</b> ' . $resultado->point_of_interaction->transaction_data->qr_code;
         }
-
+    
         // Exibe os pontos ganhos
-        echo '<p>Você gerou um pix no valor de ' .$totalValue. 'R$ e ' . $pontosGanhos . ' pontos!</p>';
-        echo '<p>Ao Pagar você recebera seus pontos automaticamente</p>';
+         echo '<h1>Não saia dessa pagina até pagar seu pix, se sair gere outro.</h1>';
+        echo '<p>Você gerou um pix no valor de ' . $totalValue . 'R$ e ' . $pontosGanhos . ' pontos!</p>';
+        echo '<h1>Ao Pagar você precisa clicar no botão a baixo e verificar seu pagamento.</h1>';
         echo '<p>Status: ' . $resultado->status . '</p>';
-		echo '<button onclick="location.href=\'https://mywebsite.online/?p=mpnotification&id=' . $collector_id . '&debug=' . ($debug ? 'true' : 'false') . '\'" type="button">Conferir Status do Pedido</button> <br>';
+        echo '<button onclick="location.href=\'https://meusite.com/?p=mpnotification&id=' . $collector_id . '&debug=' . ($debug ? 'true' : 'false') . '\'" type="button">Conferir Status do Pedido</button> <br>';
+    
         // Ação no banco de dados (se necessário)
         $current_session = getSession('account');
-
+    
         $sql = "INSERT INTO status(status, codigo, account, points) VALUES(?, ?, ?, ?)";
         $stmt = mysqli_prepare($conexao, $sql);
-        
+    
         // Check if the statement was prepared successfully
         if ($stmt) {
             // Assuming $current_session and $pontosGanhos are defined elsewhere in your code
             // Bind parameters with data types
             mysqli_stmt_bind_param($stmt, "sssi", $resultado->status, $collector_id, $current_session, $pontosGanhos);
-        
+    
             // Execute the statement
             mysqli_stmt_execute($stmt);
-        
+    
             // Check for successful execution
             if (mysqli_stmt_affected_rows($stmt) > 0) {
                 echo "Record inserted successfully";
             } else {
-                echo "Error inserting record";
+                echo "Error inserting record: " . mysqli_error($conexao);
             }
-        
+    
             // Close the statement
             mysqli_stmt_close($stmt);
         } else {
@@ -132,12 +130,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } else {
         echo '<p>Erro ao processar o pagamento. Tente novamente.</p>';
-
+    
         // Display error message, if available
         if (isset($resultado->message)) {
             echo '<p>Error Message: ' . $resultado->message . '</p>';
         }
-
+    
         // Display status for further analysis
         echo '<p>Status: ' . $resultado->status . '</p>';
     }
@@ -147,9 +145,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form method="POST">
             <label for="quantidade">Quantidade de Doações:</label>
             <select name="quantidade" id="quantidade" required>
-                <option value="1">1 - R$25,00 (60 pontos)</option>
-                <option value="2">2 - R$50,00 (120 pontos)</option>
-                <option value="3">3 - R$75,00 (180 pontos)</option>
+                <option value="1">1 - R$10,00 (250 pontos)</option>
+                <option value="2">2 - R$50,00 (500 pontos)</option>
+                <option value="3">3 - R$75,00 (750 pontos)</option>
+                <option value="4">4 - R$100,00 (1000 pontos)</option>
+                <option value="5">5 - R$200,00 (2000 pontos)</option>
+                <option value="6">6 - R$300,00 (3000 pontos)</option>
                 <!-- Adicione mais opções conforme necessário -->
             </select>
             <br>
